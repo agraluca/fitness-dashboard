@@ -1,0 +1,35 @@
+.base-wrapper {
+  display: grid;
+  grid-template-areas:
+    "side menu menu"
+    "side main main"
+    "side main main";
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 84px auto auto;
+}
+
+.base-menu {
+  grid-area: menu;
+}
+
+.base-sidebar {
+  grid-area: side;
+}
+
+.base-main {
+  grid-area: main;
+  min-height: calc(100vh - 84px);
+}
+
+@media (max-width: theme(screens[md])) {
+  .base-wrapper {
+    grid-template-areas:
+      "menu menu menu"
+      "main main main"
+      "main main main";
+  }
+
+  .base-sidebar {
+    display: none;
+  }
+}

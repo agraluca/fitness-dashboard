@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  background: theme(colors[teal]100);
+  width: 7px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme(colors[teal]100);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme(colors[teal].700);
+}
