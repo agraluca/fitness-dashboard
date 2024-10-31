@@ -1,6 +1,7 @@
 import HomeIcon from "svgs/HomeIcon";
 
 import { useTheme } from "stores/themeStore";
+
 import { cn } from "utils/cn";
 
 export default function Sidebar() {
@@ -8,9 +9,12 @@ export default function Sidebar() {
 
   return (
     <nav
-      className={cn("bg-slate-100 h-screen border-r border-slate-500", {
-        "bg-slate-800": theme === "dark",
-      })}
+      className={cn(
+        "bg-slate-100 min-h-screen h-full border-r border-slate-500",
+        {
+          "bg-slate-800": theme === "dark",
+        }
+      )}
     >
       <div className="w-full flex justify-center items-center border-b border-b-slate-500 h-[84px]">
         <h1

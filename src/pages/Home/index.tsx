@@ -12,10 +12,17 @@ import { useState } from "react";
 export default function Home() {
   const { theme } = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [seconds, setSeconds] = useState(10);
   return (
     <Base>
       <div className="flex flex-col gap-4 p-4">
-        <h1 className="text-slate-50 font-medium text-2xl">Dashboard</h1>
+        <h1
+          className={cn("text-slate-800 font-medium text-2xl", {
+            "text-slate-50": theme === "dark",
+          })}
+        >
+          Dashboard
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card>
@@ -58,15 +65,35 @@ export default function Home() {
 
         <div>
           <Card>
-            <div className="flex gap-8 items-center">
-              <Button onClick={() => setIsPlaying(true)}>Start workout</Button>
-              {isPlaying && (
-                <Timer
-                  duration={10}
-                  isPlaying={isPlaying}
-                  handleReset={() => setIsPlaying(false)}
-                />
-              )}
+            <div className="flex flex-col gap-4">
+              <h3
+                className={cn("text-slate-800 text-2xl", {
+                  "text-slate-50": theme === "dark",
+                })}
+              >
+                Workout
+              </h3>
+              <div className="flex flex-col gap-6 items-center md:items-start justify-center ">
+                {isPlaying && (
+                  <Timer
+                    duration={seconds}
+                    isPlaying={isPlaying}
+                    handleReset={() => setIsPlaying(false)}
+                  />
+                )}
+                <div className="w-full md:w-[30%] flex flex-col gap-3">
+                  <input
+                    className="border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-teal-400"
+                    type="number"
+                    placeholder="Seconds"
+                    value={seconds}
+                    onChange={(e) => setSeconds(Number(e.target.value))}
+                  />
+                  <Button onClick={() => setIsPlaying(true)}>
+                    Start workout
+                  </Button>
+                </div>
+              </div>
             </div>
           </Card>
         </div>
